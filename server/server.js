@@ -50,7 +50,7 @@ function getRound(socket) {
       name: horse.name,
       distance: maxDistance < currentDistance ? maxDistance : currentDistance
     }
-    
+
   });
 
   socket.emit('ticker', round);
@@ -59,11 +59,11 @@ function getRound(socket) {
 function trackTickers(socket) {
   getRound(socket);
 
-  const timer = setInterval(function() {
+  const timer = setInterval(function () {
     getRound(socket);
   }, INTERVAL);
 
-  socket.on('disconnect', function() {
+  socket.on('disconnect', function () {
     clearInterval(timer);
     horses.map(horse => horse.distance = 0);
   });
@@ -79,12 +79,13 @@ const socketServer = io(server, {
   }
 });
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
 socketServer.on('connection', (socket) => {
   socket.on('start', () => {
+    console.log(i);
     horses.map(horse => horse.distance = 0);
     trackTickers(socket);
   });

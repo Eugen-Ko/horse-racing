@@ -41,15 +41,23 @@ export const ModalWindow = ({ isOpenModal, setIsOpenModal, setPlayer }) => {
         <Typography id="modal-modal-title" variant="h6" component="h2">
           Input you name
         </Typography>
-        <TextField
-          id="standard-basic"
-          label="Input you name"
-          variant="standard"
-          onChange={(e) => onChange(e)}
-        />
-        <Button onClick={() => onClose()} variant="contained">
-          Contained
-        </Button>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-evenly",
+          }}
+        >
+          <TextField
+            id="standard-basic"
+            label="Input you name"
+            variant="standard"
+            onChange={(e) => onChange(e)}
+          />
+          <Button onClick={() => onClose()} variant="contained">
+            Login
+          </Button>
+        </Box>
       </Box>
     </Modal>
   );

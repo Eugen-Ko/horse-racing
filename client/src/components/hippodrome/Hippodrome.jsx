@@ -57,6 +57,7 @@ export const Hippodrome = ({ onStart }) => {
                     width: `10px`,
                     height: "10px",
                     backgroundColor: `${el.color}`,
+                    // backgroundColor: "red",
                     margin: `10px 0 10px ${el.distance}px`,
                   }}
                 />

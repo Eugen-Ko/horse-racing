@@ -1,30 +1,32 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { io } from "socket.io-client";
 
 import { ModalWindow } from "../modalWindow/ModalWindow";
 import { Header } from "../header/Header";
 import { Hippodrome } from "../hippodrome/Hippodrome";
-import { raceOperations, raceSelectors } from "../../redux/race";
+import { raceOperations } from "../../redux/race";
 
 export const Layout = () => {
   const socket = io("http://localhost:3002");
 
   const [isOpenModal, setIsOpenModal] = useState(true);
   const [player, setPlayer] = useState("");
-  const dispatch = useDispatch();
-  // const result = useSelector(raceSelectors.getResult);
   const [winner, setWinner] = useState([]);
+  const dispatch = useDispatch();
 
   const finishChecker = (round) => {
     for (let i = 0; i < round.length; i += 1) {
       if (round[i].distance >= 100) {
         if (!winner.includes(round[i].name)) {
           setWinner([winner.push(round[i].name)]);
-          console.log(winner);
+          dispatch(raceOperations.setResult(round[i].name));
         }
       }
+    }
+    if (winner.length === round.length) {
+      socket.emit("stop");
     }
   };
 

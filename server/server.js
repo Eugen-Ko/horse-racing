@@ -63,6 +63,11 @@ function trackTickers(socket) {
     getRound(socket);
   }, INTERVAL);
 
+  socket.on('stop', () => {
+    clearInterval(timer);
+    horses.map(horse => horse.distance = 0);
+  })
+
   socket.on('disconnect', function () {
     clearInterval(timer);
     horses.map(horse => horse.distance = 0);

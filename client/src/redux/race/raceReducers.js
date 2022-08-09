@@ -20,15 +20,13 @@ const copyColor = (state, payload) => {
   return payload
 }
 
-// const addWinner = (state, payload) => {
-//   const res = [...state.result];
-//   res.push(payload);
-//   console.log(res);
-//   return res
-// }
+const addWinner = (state, payload) => {
+  const res = [...state.result];
+  res.push(payload);
+  return res
+}
 
 const raceState = createReducer(raceInitialState, {
-
   [raceActions.setPlayerNameSuccess]: (state, { payload }) => {
     return { ...state, playerName: payload }
   },
@@ -40,11 +38,10 @@ const raceState = createReducer(raceInitialState, {
     copyColor(state, payload);
     return { ...state, round: [...payload] }
   },
-  // [raceActions.setResultSuccess]: (state, { payload }) => {
-  //   const res = addWinner(state, payload);
-  //   return { ...state, result: [...res] }
-  // },
-
+  [raceActions.setResultSuccess]: (state, { payload }) => {
+    const res = addWinner(state, payload);
+    return { ...state, result: [...res] }
+  },
 });
 
 // const loading = createReducer(false, {

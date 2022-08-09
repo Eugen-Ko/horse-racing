@@ -12,15 +12,15 @@ const setCurrentRound = (round) => dispatch => {
   dispatch(raceActions.setCurrentRoundSuccess(round));
 }
 
-// const setResult = (name) => dispatch => {
-//   dispatch(raceActions.setResultSuccess(name));
-// }
+const setResult = (name) => dispatch => {
+  dispatch(raceActions.setResultSuccess(name));
+}
 
 const raceOperations = {
   setPlayerName,
   setListHorses,
   setCurrentRound,
-  // setResult,
+  setResult,
 }
 
 export default raceOperations

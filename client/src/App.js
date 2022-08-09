@@ -1,18 +1,20 @@
 import './App.css';
-import { io } from 'socket.io-client';
-
-const socket = io('http://localhost:3002');
-
-socket.emit('start');
-
-const connect = () => {
-  socket.on('ticker', (round) => { console.log(round) });
-}
-
+import { Layout } from './components/layout/Layout.jsx';
+// import { io } from 'socket.io-client';
 
 function App() {
+  // const socket = io("http://localhost:3002");
+  // console.log(socket.id);
+
+  // socket.emit('connected');
+  // console.log(socket);
+  // socket.on('listHorses', (horses) => console.log(horses))
+
+
+
+
   return (
-    <button onClick={() => connect()}>Start</button>
+    <Layout />
   );
 }
 

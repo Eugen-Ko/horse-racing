@@ -84,8 +84,8 @@ app.get('/', function (req, res) {
 });
 
 socketServer.on('connection', (socket) => {
+  socket.emit('listHorses', horses);
   socket.on('start', () => {
-    console.log(i);
     horses.map(horse => horse.distance = 0);
     trackTickers(socket);
   });

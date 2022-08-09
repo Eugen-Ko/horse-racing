@@ -7,6 +7,9 @@ const raceInitialState = {
   horses: [],
   round: [],
   result: [],
+  isStart: false,
+  isStop: true,
+  isRefresh: true,
 };
 
 const createColor = (payload) => {
@@ -41,6 +44,15 @@ const raceState = createReducer(raceInitialState, {
   [raceActions.setResultSuccess]: (state, { payload }) => {
     const res = addWinner(state, payload);
     return { ...state, result: [...res] }
+  },
+  [raceActions.setStartSuccess]: (state) => {
+    return { ...state, isStart: true, isStop: false, isRefresh: true }
+  },
+  [raceActions.setStopSuccess]: (state) => {
+    return { ...state, isStart: true, isStop: true, isRefresh: false }
+  },
+  [raceActions.setRefreshSuccess]: (state) => {
+    return { ...state, round: [], result: [], isStart: false, isStop: true, isRefresh: true }
   },
 });
 

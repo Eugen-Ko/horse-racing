@@ -31,11 +31,21 @@ export const Layout = () => {
   };
 
   const onStart = () => {
+    dispatch(raceOperations.setStart());
     socket.emit("start");
     socket.on("ticker", (round) => {
       dispatch(raceOperations.setCurrentRound(round));
       finishChecker(round);
     });
+  };
+
+  const onStop = () => {
+    dispatch(raceOperations.setStop());
+    socket.emit("stop");
+  };
+
+  const onRefresh = () => {
+    dispatch(raceOperations.setRefresh());
   };
 
   useEffect(() => {
@@ -60,7 +70,7 @@ export const Layout = () => {
       {!isOpenModal && (
         <>
           <Header playerName={player} />
-          <Hippodrome onStart={onStart} />
+          <Hippodrome onStart={onStart} onStop={onStop} onRefresh={onRefresh} />
         </>
       )}
     </>

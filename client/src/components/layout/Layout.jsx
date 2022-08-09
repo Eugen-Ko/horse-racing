@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ModalWindow } from "../modalWindow/ModalWindow";
 import { Header } from "../header/Header";
 import { ListOfHorses } from "../listOfHorses/ListOfHorses";
+import { Hippodrome } from "../hippodrome/Hippodrome";
 
 export const Layout = () => {
   const [isOpenModal, setIsOpenModal] = useState(true);
@@ -21,6 +22,7 @@ export const Layout = () => {
         <>
           <Header playerName={playerName} />
           <ListOfHorses />
+          <Hippodrome />
         </>
       )}
     </>

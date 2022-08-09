@@ -3,11 +3,14 @@ import { useEffect, useState } from "react";
 
 export const ListOfHorses = () => {
   const socket = io("http://localhost:3002");
-  // console.log(socket.id);
   const [listHorses, setListHorses] = useState([]);
   socket.emit("connected");
-  // console.log(socket);
-  socket.on("listHorses", (horses) => setListHorses(horses));
+  useEffect(() => {
+    socket.on("listHorses", (horses) => {
+      console.log("hire");
+      setListHorses(horses);
+    });
+  }, []);
 
   return (
     <>
@@ -15,6 +18,7 @@ export const ListOfHorses = () => {
         {listHorses.map((el) => (
           <li key={el.name}>
             <span>{el.name}</span>
+            {`      `}
             <span>rate</span>
           </li>
         ))}

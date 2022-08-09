@@ -12,7 +12,7 @@ const style = {
   p: 4,
 };
 
-export const ModalWindow = ({ isOpenModal, setIsOpenModal, setPlayerName }) => {
+export const ModalWindow = ({ isOpenModal, setIsOpenModal, setPlayer }) => {
   const [name, setName] = useState("");
 
   const onChange = (e) => {
@@ -24,7 +24,7 @@ export const ModalWindow = ({ isOpenModal, setIsOpenModal, setPlayerName }) => {
       alert("Input name!!!");
       return;
     }
-    setPlayerName(name);
+    setPlayer(name);
     setIsOpenModal(false);
   };
 

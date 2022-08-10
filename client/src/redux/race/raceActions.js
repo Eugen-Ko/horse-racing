@@ -7,6 +7,7 @@ const setResultSuccess = createAction('race/setResultSuccess');
 const setStartSuccess = createAction('race/setStartSuccess');
 const setStopSuccess = createAction('race/setStopSuccess');
 const setRefreshSuccess = createAction('race/setRefreshSuccess');
+const setIsMadeBetSuccess = createAction('race/setMadeBetSuccess');
 
 const raceActions = {
   setPlayerNameSuccess,
@@ -16,5 +17,6 @@ const raceActions = {
   setStartSuccess,
   setStopSuccess,
   setRefreshSuccess,
+  setIsMadeBetSuccess,
 };
 export default raceActions;

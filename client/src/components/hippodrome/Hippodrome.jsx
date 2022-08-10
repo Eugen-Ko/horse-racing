@@ -1,7 +1,9 @@
-import { Box, Button, Typography } from "@mui/material";
+import { useState } from "react";
 import { useSelector } from "react-redux";
+import { Box, Button, Typography } from "@mui/material";
 
 import { raceSelectors } from "../../redux/race";
+import { ModalMadeBet } from "../modalMadeBet/ModalMadeBet";
 
 export const Hippodrome = ({ onStart, onStop, onRefresh }) => {
   const start = useSelector(raceSelectors.getHorsesList);
@@ -9,23 +11,30 @@ export const Hippodrome = ({ onStart, onStop, onRefresh }) => {
   const isStart = useSelector(raceSelectors.getIsStart);
   const isStop = useSelector(raceSelectors.getIsStop);
   const isRefresh = useSelector(raceSelectors.getIsRefresh);
-  const isBetMade = useSelector(raceSelectors.getIsBetMade);
+  const isMadeBet = useSelector(raceSelectors.getIsMadeBet);
+
+  const [modalBet, setModalBet] = useState(false);
 
   const round = race.length === 0 ? start : race;
 
   return (
     <Box sx={{ margin: "0 30px" }}>
-      {!isBetMade && (
+      {!isMadeBet && (
         <Button
           sx={{ marginBottom: "20px", marginRight: "20px" }}
           variant="contained"
           disabled={isStart}
-          onClick={() => {}}
+          onClick={() => {
+            setModalBet(true);
+          }}
         >
           Let's make a bet
         </Button>
       )}
-      {isBetMade && (
+      {modalBet && (
+        <ModalMadeBet modalBet={modalBet} setModalBet={setModalBet} />
+      )}
+      {isMadeBet && (
         <>
           <Button
             sx={{ marginBottom: "20px", marginRight: "20px" }}
@@ -80,6 +89,7 @@ export const Hippodrome = ({ onStart, onStop, onRefresh }) => {
                     backgroundColor: `${el.color}`,
                     // backgroundColor: "red",
                     margin: `10px 0 10px ${el.distance}px`,
+                    borderRadius: "5px",
                   }}
                 />
               </Box>

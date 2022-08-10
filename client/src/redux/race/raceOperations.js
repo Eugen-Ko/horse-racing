@@ -28,6 +28,10 @@ const setRefresh = () => dispatch => {
   dispatch(raceActions.setRefreshSuccess())
 }
 
+const setBet = (name) => dispatch => {
+  dispatch(raceActions.setIsMadeBetSuccess(name))
+}
+
 const raceOperations = {
   setPlayerName,
   setListHorses,
@@ -36,6 +40,7 @@ const raceOperations = {
   setStart,
   setStop,
   setRefresh,
+  setBet
 }
 
 export default raceOperations

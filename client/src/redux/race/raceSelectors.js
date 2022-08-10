@@ -4,7 +4,7 @@ const getResult = state => state.race.raceState.result;
 const getIsStart = state => state.race.raceState.isStart;
 const getIsStop = state => state.race.raceState.isStop;
 const getIsRefresh = state => state.race.raceState.isRefresh;
-const getIsBetMade = state => state.race.raceState.isBetMaid;
+const getIsMadeBet = state => state.race.raceState.isMadeBet;
 
 const raceSelectors = {
   getHorsesList,
@@ -13,7 +13,7 @@ const raceSelectors = {
   getIsStart,
   getIsStop,
   getIsRefresh,
-  getIsBetMade,
+  getIsMadeBet,
 }
 
 export default raceSelectors;

@@ -10,6 +10,7 @@ const raceInitialState = {
   isStart: false,
   isStop: true,
   isRefresh: true,
+  isMadeBet: null,
 };
 
 const createColor = (payload) => {
@@ -52,7 +53,10 @@ const raceState = createReducer(raceInitialState, {
     return { ...state, isStart: true, isStop: true, isRefresh: false }
   },
   [raceActions.setRefreshSuccess]: (state) => {
-    return { ...state, round: [], result: [], isStart: false, isStop: true, isRefresh: true }
+    return { ...state, round: [], result: [], isStart: false, isStop: true, isRefresh: true, isMadeBet: null }
+  },
+  [raceActions.setIsMadeBetSuccess]: (state, { payload }) => {
+    return { ...state, isMadeBet: payload }
   },
 });
 
